@@ -1,0 +1,2 @@
+C:\Program Files\Unity\Projects\DaggersBlood-master\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Program Files\Unity\Projects\DaggersBlood-master\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
