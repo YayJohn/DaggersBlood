@@ -6,12 +6,13 @@ public class EnemyAI : MonoBehaviour {
 
 	Vector2 playerPosition;
 	public GameObject player;
+	public EnemyRules enemyRules;
 	bool timerEnabler = false;
 	float timer = 1.5f;
 
 	// Update is called once per frame
 	void Update () {
-		if(gameObject.GetComponent<EnemyRules>().enemyDead == false) {
+		if(enemyRules.enemyDead == false) {
 			playerPosition = new Vector2(GameObject.Find("Player").transform.position.x, 0);
 			transform.position = Vector3.MoveTowards(transform.position, playerPosition, 1f * Time.deltaTime);
 		}
@@ -19,19 +20,23 @@ public class EnemyAI : MonoBehaviour {
 			if(timer > 0f) {
 				timer -= Time.deltaTime;
 			} else {
-				Debug.Log("Timer Done");
 				GameObject.Find("Machete").GetComponent<CapsuleCollider2D>().enabled = false;
 				GameObject.Find("Machete").GetComponent<CapsuleCollider2D>().enabled = true;
 				timerEnabler = false;
 				timer = 1.5f;
 			}
 		}
-		if (player.transform != null) {
-			transform.LookAt(player.transform);
-		}
+		/*Vector3 vectorToTarget = player.transform.position - transform.position;
+        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+        Quaternion q = Quaternion.AngleAxis(angle, Vector3.up);
+        transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * 5f);*/
 	}
 	void OnTriggerEnter2D () {
-            gameObject.GetComponentInChildren<Animator>().Play("EnemyAttack");
+		if(enemyRules.enemyDead == false) {
+			gameObject.GetComponentInChildren<Animator>().Play("EnemyAttack");
 			timerEnabler = true;
+		} else {
+			GameObject.Find("Machete").GetComponent<CapsuleCollider2D>().isTrigger = false;
+		}
     }
 }
