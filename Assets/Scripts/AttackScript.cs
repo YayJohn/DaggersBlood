@@ -26,4 +26,9 @@ public class AttackScript : MonoBehaviour {
             }
         }
 	}
+    void OnTriggerEnter2D(Collider2D collision) {
+		if (collision.gameObject.tag == "Enemy" && collision != collision.gameObject.GetComponent<BoxCollider2D>()) {
+            collision.gameObject.GetComponent<EnemyRules>().enemyHealth -= 1;
+        }
+    }
 }

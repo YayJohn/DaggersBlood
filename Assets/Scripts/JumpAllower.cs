@@ -10,7 +10,6 @@ public class JumpAllower : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D collision) {
 		if (collision.gameObject.tag == "Player") {
 			playerMovement.GetComponent<PlayerMovement>().jumpEnabler = 2;
-			Debug.Log("Standing on ground");
 		}
 	}
 }

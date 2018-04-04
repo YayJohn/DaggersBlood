@@ -56,7 +56,6 @@
      <Compile Include="Assets\Scripts\EnemyKillingScript.cs" />
      <Compile Include="Assets\Scripts\EnemyRules.cs" />
      <Compile Include="Assets\Scripts\JumpAllower.cs" />
-     <Compile Include="Assets\Scripts\KillingScript.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\PlayerRules.cs" />
      <None Include="Assets\AutoSave\ReadMe.txt" />

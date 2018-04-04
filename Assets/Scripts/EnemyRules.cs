@@ -6,12 +6,12 @@ public class EnemyRules : MonoBehaviour {
 
     public int enemyHealth = 3;
     public int enemyAttack = 1;
-    public bool enemyDead = false;
     public GameObject FullHearts;
 	public GameObject FullHeart1;
 	public GameObject FullHeart2;
 	public GameObject FullHeart3;
 	public GameObject EmptyHearts;
+	bool deathAnimationInitiated = false;
 
     void Update() {
         switch(enemyHealth) {
@@ -30,9 +30,15 @@ public class EnemyRules : MonoBehaviour {
 				FullHearts.SetActive(false);
 				break;				
 		}
-        if(enemyHealth <= 0) {
-            enemyDead = true;
-            gameObject.GetComponent<Animator>().Play("EnemyDeath");
+        if(enemyHealth <= 0 && deathAnimationInitiated == false) {
+            gameObject.GetComponent<EnemyAI>().enemyDead = true;
+			if (gameObject.GetComponent<EnemyAI>().enemyRotated == false) {
+				gameObject.GetComponent<Animator>().Play("EnemyDeath");
+			} else {
+				gameObject.GetComponent<Animator>().Play("EnemyDeathRotated");
+			}
+			gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+			deathAnimationInitiated = true;
         }
     }
 }
