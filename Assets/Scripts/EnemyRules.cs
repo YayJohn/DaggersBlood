@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class EnemyRules : MonoBehaviour {
 
+	[HideInInspector]
     public int enemyHealth = 3;
+	[HideInInspector]
     public int enemyAttack = 1;
     public GameObject FullHearts;
 	public GameObject FullHeart1;
@@ -14,6 +16,7 @@ public class EnemyRules : MonoBehaviour {
 	bool deathAnimationInitiated = false;
 
     void Update() {
+		// shows a number of hearts corresponding to the enemy's health
         switch(enemyHealth) {
 			case 2:
 				FullHearts.SetActive(true);
@@ -30,6 +33,7 @@ public class EnemyRules : MonoBehaviour {
 				FullHearts.SetActive(false);
 				break;				
 		}
+		// if the enemy's health is less or equal to 0 and he still didnt do this if, then say that he's dead and play his death animation 
         if(enemyHealth <= 0 && deathAnimationInitiated == false) {
             gameObject.GetComponent<EnemyAI>().enemyDead = true;
 			if (gameObject.GetComponent<EnemyAI>().enemyRotated == false) {
@@ -37,7 +41,6 @@ public class EnemyRules : MonoBehaviour {
 			} else {
 				gameObject.GetComponent<Animator>().Play("EnemyDeathRotated");
 			}
-			gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 			deathAnimationInitiated = true;
         }
     }

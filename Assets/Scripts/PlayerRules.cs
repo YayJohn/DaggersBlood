@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerRules : MonoBehaviour {
 
+	[HideInInspector]
 	public int playerHealth = 3;
+	[HideInInspector]
     public int playerAttack = 1;
 	public GameObject FullHearts;
 	public GameObject FullHeart1;
@@ -14,6 +16,7 @@ public class PlayerRules : MonoBehaviour {
 	public GameObject EndGameScreen;
 	
 	void Update() {
+		// shows a number of hearts corresponding to the player's health
 		switch(playerHealth) {
 			case 2:
 				FullHearts.SetActive(true);
@@ -30,6 +33,7 @@ public class PlayerRules : MonoBehaviour {
 				FullHearts.SetActive(false);
 				break;				
 		}
+		// if the player is dead show the EndGameScreen (GAME OVER Screen)
 		if (playerHealth <= 0) {
 			EndGameScreen.SetActive(true);
 		}
