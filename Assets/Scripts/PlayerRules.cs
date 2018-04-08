@@ -14,7 +14,14 @@ public class PlayerRules : MonoBehaviour {
 	public GameObject FullHeart3;
 	public GameObject EmptyHearts;
 	public GameObject EndGameScreen;
+	Vector3 facingLeftScale;
+	Vector3 facingRightScale;
+	public Camera camera;
 	
+	void Start() {
+		facingLeftScale = transform.localScale;
+		facingRightScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+	}
 	void Update() {
 		// shows a number of hearts corresponding to the player's health
 		switch(playerHealth) {
@@ -36,6 +43,14 @@ public class PlayerRules : MonoBehaviour {
 		// if the player is dead show the EndGameScreen (GAME OVER Screen)
 		if (playerHealth <= 0) {
 			EndGameScreen.SetActive(true);
+		}
+		Vector3 MousePosition = camera.ScreenToWorldPoint(Input.mousePosition);
+        if (transform.position.x > MousePosition.x) {
+			Debug.Log("Curosr on left");
+			transform.localScale = facingLeftScale;
+		} else if(transform.position.x < MousePosition.x) {
+			Debug.Log("Curosr on right");
+			transform.localScale = facingRightScale;
 		}
 	}
 }

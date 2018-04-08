@@ -1,0 +1,3 @@
+- Tutorial Level
+- Locking on enemy Mechanizem
+- More arm Variants for player (for attacking animation)
