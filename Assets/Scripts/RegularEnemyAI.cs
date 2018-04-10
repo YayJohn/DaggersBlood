@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAI : MonoBehaviour {
+public class RegularEnemyAI : MonoBehaviour {
 
 	Vector2 playerPosition;
 	public GameObject player;
-	public EnemyRules enemyRules;
+	public RegularEnemyRules enemyRules;
 	public GameObject machete;
 	public Animator enemyAnimator;
 	bool timerEnabler = false;

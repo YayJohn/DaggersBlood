@@ -1,3 +1,18 @@
-- Tutorial Level
-- Locking on enemy Mechanizem
-- More arm Variants for player (for attacking animation)
+Now:
+- More Enemy AI Variants
+- red stroke around the screen when the health is low
+- change the players' health's design and position to something more modern
+
+Later:
+After new player texture is done to this {
+- More arm Variants for player (after making new character texture)
+- At certain health points the texture changes to a sliced version of the same object
+- Player Able to Dodge
+}
+- After a lot of mechanics are made, make a Tutorial Level
+ 
+Maybe:
+- add a stealth system so more players will try the game (Ill do this depending on what type of game this will end up)
+
+More Enemy AI Variants:
+using my new texture Ill make an enemy that runs at you really fast and if you block his attack just in time he will get knocked out and you'll be able to kill him

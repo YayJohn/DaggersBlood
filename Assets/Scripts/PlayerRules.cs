@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerRules : MonoBehaviour {
 
@@ -17,14 +18,39 @@ public class PlayerRules : MonoBehaviour {
 	Vector3 facingLeftScale;
 	Vector3 facingRightScale;
 	public Camera camera;
+	public bool timerStarter = false;
+	float timer = 5f;
+	public GameObject healthBar;
+	public Image bar3;
+	public Image bar2;
 	
 	void Start() {
 		facingLeftScale = transform.localScale;
 		facingRightScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 	}
 	void Update() {
+		if (timerStarter == true) {
+			if (timer > 0) {
+				timer -= Time.deltaTime;
+			} else {
+				timer = 5f;
+				timerStarter = false;
+				healthBar.SetActive(false);
+			}
+		}
 		// shows a number of hearts corresponding to the player's health
-		switch(playerHealth) {
+		if (healthBar.activeSelf == true) {
+			switch(playerHealth) {
+			case 2:
+			bar3.color = new Color32(212, 0, 0, 0);
+			break;
+
+			case 1:
+			bar2.color = new Color32(212, 0, 0, 0);
+			break;
+		}
+		}
+		/* switch(playerHealth) {
 			case 2:
 				FullHearts.SetActive(true);
 				FullHeart3.SetActive(false);
@@ -39,18 +65,25 @@ public class PlayerRules : MonoBehaviour {
 				FullHeart1.SetActive(true);
 				FullHearts.SetActive(false);
 				break;				
-		}
+		} */
 		// if the player is dead show the EndGameScreen (GAME OVER Screen)
 		if (playerHealth <= 0) {
 			EndGameScreen.SetActive(true);
 		}
 		Vector3 MousePosition = camera.ScreenToWorldPoint(Input.mousePosition);
+		//Curser on Left
         if (transform.position.x > MousePosition.x) {
-			Debug.Log("Curosr on left");
 			transform.localScale = facingLeftScale;
+		//Curser on Right
 		} else if(transform.position.x < MousePosition.x) {
-			Debug.Log("Curosr on right");
 			transform.localScale = facingRightScale;
+		}
+	}
+	void OnCollisionExit2D(Collision2D collision) {
+		if (collision.gameObject.name != "Medival Sword") {
+			//if the player is hit start the timer
+			timerStarter = true;
+			healthBar.SetActive(true);
 		}
 	}
 }

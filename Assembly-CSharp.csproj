@@ -51,13 +51,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CameraFollow.cs" />
+     <Compile Include="Assets\RunnerEnemyRules.cs" />
      <Compile Include="Assets\Scripts\AttackScript.cs" />
-     <Compile Include="Assets\Scripts\EnemyAI.cs" />
      <Compile Include="Assets\Scripts\EnemyKillingScript.cs" />
-     <Compile Include="Assets\Scripts\EnemyRules.cs" />
      <Compile Include="Assets\Scripts\JumpAllower.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\PlayerRules.cs" />
+     <Compile Include="Assets\Scripts\RegularEnemyAI.cs" />
+     <Compile Include="Assets\Scripts\RegularEnemyRules.cs" />
+     <Compile Include="Assets\Scripts\RunnerEnemyAI.cs" />
      <None Include="Assets\AutoSave\ReadMe.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
