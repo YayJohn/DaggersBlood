@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackScript : MonoBehaviour {
+public class CombatScript : MonoBehaviour {
 	
     float timer = 0.75f;
     bool timerStarter = false;
+    public bool defending = false;
 
 	// Update is called once per frame
 	void Update () {
@@ -29,6 +30,15 @@ public class AttackScript : MonoBehaviour {
                 timerStarter = false;
                 timer = 0.75f;
             }
+        }
+        if (Input.GetButton("Fire2") == false) {
+            gameObject.GetComponent<Animator>().SetBool("defending", false);
+            defending = false;
+        }
+        if (Input.GetButton("Fire2")) {
+            gameObject.GetComponent<Animator>().SetBool("defending", true);
+            defending = true;
+            gameObject.GetComponent<Animator>().Play("SwordDefence");
         }
 	}
     void OnTriggerEnter2D(Collider2D collision) {

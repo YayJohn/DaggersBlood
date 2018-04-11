@@ -2,6 +2,7 @@ Now:
 - More Enemy AI Variants
 - red stroke around the screen when the health is low
 - change the players' health's design and position to something more modern
+- Add an alert system (enemies wont just follow you if you are far away from them)
 
 Later:
 After new player texture is done to this {
@@ -10,9 +11,10 @@ After new player texture is done to this {
 - Player Able to Dodge
 }
 - After a lot of mechanics are made, make a Tutorial Level
+- Add a Check mark on top of the enemies head and make them do a little jump when they get alerted
  
 Maybe:
 - add a stealth system so more players will try the game (Ill do this depending on what type of game this will end up)
 
 More Enemy AI Variants:
-using my new texture Ill make an enemy that runs at you really fast and if you block his attack just in time he will get knocked out and you'll be able to kill him
+using my new texture Ill make an enemy that runs at you really fast and if you block his attack just in time he will get knocked out and you'll be able to kill him and if not you'll get damaged and stunned

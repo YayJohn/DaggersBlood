@@ -38,8 +38,6 @@ public class RegularEnemyRules : MonoBehaviour {
             gameObject.GetComponent<RegularEnemyAI>().enemyDead = true;
 			if (gameObject.GetComponent<RegularEnemyAI>().enemyRotated == false) {
 				gameObject.GetComponent<Animator>().Play("EnemyDeath");
-			} else {
-				gameObject.GetComponent<Animator>().Play("EnemyDeathRotated");
 			}
 			deathAnimationInitiated = true;
         }

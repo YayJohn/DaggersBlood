@@ -23,12 +23,22 @@ public class PlayerRules : MonoBehaviour {
 	public GameObject healthBar;
 	public Image bar3;
 	public Image bar2;
+	public bool stunned = false;
+	float stunTimer = 3f;
 	
 	void Start() {
 		facingLeftScale = transform.localScale;
 		facingRightScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 	}
 	void Update() {
+		if (stunned == true) {
+			if (stunTimer > 0) {
+				stunTimer -= Time.deltaTime;
+			} else {
+				stunTimer = 3f;
+				stunned = false;
+			}
+		}
 		if (timerStarter == true) {
 			if (timer > 0) {
 				timer -= Time.deltaTime;
@@ -48,24 +58,8 @@ public class PlayerRules : MonoBehaviour {
 			case 1:
 			bar2.color = new Color32(212, 0, 0, 0);
 			break;
+			}
 		}
-		}
-		/* switch(playerHealth) {
-			case 2:
-				FullHearts.SetActive(true);
-				FullHeart3.SetActive(false);
-				EmptyHearts.SetActive(true);
-				break;
-			case 1:
-				FullHeart2.SetActive(false);
-				break;
-			case 0:
-				FullHeart3.SetActive(true);
-				FullHeart2.SetActive(true);
-				FullHeart1.SetActive(true);
-				FullHearts.SetActive(false);
-				break;				
-		} */
 		// if the player is dead show the EndGameScreen (GAME OVER Screen)
 		if (playerHealth <= 0) {
 			EndGameScreen.SetActive(true);

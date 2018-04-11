@@ -15,16 +15,18 @@ public class RegularEnemyAI : MonoBehaviour {
 	public bool enemyRotated = false;
 	[HideInInspector]
 	public bool enemyDead = false;
+	Vector3 facingLeftScale;
+	Vector3 facingRightScale;
 
+	void Start() {
+		facingRightScale = transform.localScale;
+		facingLeftScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+	}
 	void OnTriggerEnter2D (Collider2D collision) {
 		// if the enemy trigger touched something that isnt his machete and he isnt dead attack if he is dead make the sword non lethal
 		if(collision.gameObject.name != "Machete") {
 			if(enemyDead == false) {
-				if(enemyRotated == false) {
-					gameObject.GetComponentInChildren<Animator>().Play("EnemyAttack");
-				} else {
-					gameObject.GetComponentInChildren<Animator>().Play("EnemyAttackRotated");
-				}
+				gameObject.GetComponentInChildren<Animator>().Play("EnemyAttack");
 				timerEnabler = true;
 			} else {
 				machete.GetComponent<CapsuleCollider2D>().isTrigger = false;
@@ -52,10 +54,10 @@ public class RegularEnemyAI : MonoBehaviour {
 		// if the enemy isnt dead it rotates to the player
 		if (enemyDead == false) {
 			if (player.transform.position.x < transform.position.x && enemyRotated == false) {
-				enemyAnimator.Play("EnemyRotating");
+				transform.localScale = facingLeftScale;
 				enemyRotated = true;
 			} else if (player.transform.position.x > transform.position.x && enemyRotated == true) {
-				enemyAnimator.Play("EnemyRotatingReversed");
+				transform.localScale = facingRightScale;
 				enemyRotated = false;
 			}
 		}
