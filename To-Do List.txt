@@ -1,8 +1,10 @@
 Now:
-- More Enemy AI Variants
-- red stroke around the screen when the health is low
-- change the players' health's design and position to something more modern
 - Add an alert system (enemies wont just follow you if you are far away from them)
+- Blocking the enemy just in time will regenerate you 0.25 HP
+- Adjust CameraFollow script
+
+Earlier Later:
+- red stroke around the screen when the health is low
 
 Later:
 After new player texture is done to this {
@@ -12,9 +14,14 @@ After new player texture is done to this {
 }
 - After a lot of mechanics are made, make a Tutorial Level
 - Add a Check mark on top of the enemies head and make them do a little jump when they get alerted
+- When an enemy hits you when you are blocking them just in time, play a sound and make them get back a bit
+- When stunned when you try to move the camera will move slightly to the side you are clicking on
  
 Maybe:
 - add a stealth system so more players will try the game (Ill do this depending on what type of game this will end up)
 
 More Enemy AI Variants:
 using my new texture Ill make an enemy that runs at you really fast and if you block his attack just in time he will get knocked out and you'll be able to kill him and if not you'll get damaged and stunned
+
+change the players' health's design and position to something more modern:
+- Make it better

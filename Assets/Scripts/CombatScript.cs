@@ -16,8 +16,8 @@ public class CombatScript : MonoBehaviour {
             gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
             GetComponent<Animator>().Play("LightAttackMedivalSword");
             timerStarter = true;
-            GetComponentInParent<PlayerRules>().timerStarter = true;
-            GetComponentInParent<PlayerRules>().healthBar.SetActive(true);
+            gameObject.GetComponentInParent<PlayerRules>().timerStarter = true;
+            gameObject.GetComponentInParent<PlayerRules>().healthBar.SetActive(true);
         }
 
         //starts an 75 milisecond timer if its requested to be started

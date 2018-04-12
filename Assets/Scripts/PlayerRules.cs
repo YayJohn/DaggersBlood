@@ -18,11 +18,13 @@ public class PlayerRules : MonoBehaviour {
 	Vector3 facingLeftScale;
 	Vector3 facingRightScale;
 	public Camera camera;
+	[HideInInspector]
 	public bool timerStarter = false;
 	float timer = 5f;
 	public GameObject healthBar;
 	public Image bar3;
 	public Image bar2;
+	[HideInInspector]
 	public bool stunned = false;
 	float stunTimer = 3f;
 	
@@ -73,7 +75,7 @@ public class PlayerRules : MonoBehaviour {
 			transform.localScale = facingRightScale;
 		}
 	}
-	void OnCollisionExit2D(Collision2D collision) {
+	void OnCollisionEnter2D(Collision2D collision) {
 		if (collision.gameObject.name != "Medival Sword") {
 			//if the player is hit start the timer
 			timerStarter = true;
