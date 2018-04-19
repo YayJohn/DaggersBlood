@@ -9,21 +9,17 @@ public class PlayerRules : MonoBehaviour {
 	public int playerHealth = 3;
 	[HideInInspector]
     public int playerAttack = 1;
-	public GameObject FullHearts;
-	public GameObject FullHeart1;
-	public GameObject FullHeart2;
-	public GameObject FullHeart3;
-	public GameObject EmptyHearts;
 	public GameObject EndGameScreen;
 	Vector3 facingLeftScale;
 	Vector3 facingRightScale;
 	public Camera camera;
 	[HideInInspector]
 	public bool timerStarter = false;
-	float timer = 5f;
+	public float timer = 5f;
 	public GameObject healthBar;
 	public Image bar3;
 	public Image bar2;
+	public Image bar1;
 	[HideInInspector]
 	public bool stunned = false;
 	float stunTimer = 3f;
@@ -53,12 +49,28 @@ public class PlayerRules : MonoBehaviour {
 		// shows a number of hearts corresponding to the player's health
 		if (healthBar.activeSelf == true) {
 			switch(playerHealth) {
+			case 3:
+				bar3.color = new Color32(212, 0, 0, 255);
+				bar2.color = new Color32(212, 0, 0, 255);
+				bar1.color = new Color32(212, 0, 0, 255);
+			break;
+
 			case 2:
-			bar3.color = new Color32(212, 0, 0, 0);
+				bar3.color = new Color32(212, 0, 0, 0);
+				bar2.color = new Color32(212, 0, 0, 255);
+				bar1.color = new Color32(212, 0, 0, 255);
 			break;
 
 			case 1:
-			bar2.color = new Color32(212, 0, 0, 0);
+				bar3.color = new Color32(212, 0, 0, 0);
+				bar2.color = new Color32(212, 0, 0, 0);
+				bar1.color = new Color32(212, 0, 0, 255);
+			break;
+
+			case 0:
+				bar3.color = new Color32(212, 0, 0, 0);
+				bar2.color = new Color32(212, 0, 0, 0);
+				bar1.color = new Color32(212, 0, 0, 0);
 			break;
 			}
 		}
@@ -79,6 +91,7 @@ public class PlayerRules : MonoBehaviour {
 		if (collision.gameObject.name != "Medival Sword") {
 			//if the player is hit start the timer
 			timerStarter = true;
+			timer = 5f;
 			healthBar.SetActive(true);
 		}
 	}

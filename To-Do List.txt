@@ -1,7 +1,8 @@
 Now:
 - Add an alert system (enemies wont just follow you if you are far away from them)
-- Blocking the enemy just in time will regenerate you 0.25 HP
+- Blocking the enemy just in time will regenerate you 0.25 HP (not sure if this was acomplished)
 - Adjust CameraFollow script
+- When you block an enemy just in time it will also stun them for a very short amount of time
 
 Earlier Later:
 - red stroke around the screen when the health is low

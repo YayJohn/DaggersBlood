@@ -31,22 +31,29 @@ public class CombatScript : MonoBehaviour {
                 timer = 0.75f;
             }
         }
-        if (Input.GetButton("Fire2") == false) {
-            gameObject.GetComponent<Animator>().SetBool("defending", false);
-            defending = false;
-        }
         if (Input.GetButton("Fire2")) {
             gameObject.GetComponent<Animator>().SetBool("defending", true);
             defending = true;
             gameObject.GetComponent<Animator>().Play("SwordDefence");
+        } else {
+            gameObject.GetComponent<Animator>().SetBool("defending", false);
+            defending = false;
         }
 	}
     void OnTriggerEnter2D(Collider2D collision) {
         // if the sword collided with an enemy and not its attack trigger then lower his health by the player's attack power (currently 1)
-		if (collision.gameObject.tag == "RegularEnemy" && collision != collision.gameObject.GetComponent<BoxCollider2D>()) {
-            collision.gameObject.GetComponent<RegularEnemyRules>().enemyHealth -= 1;
-        } else if (collision.gameObject.tag == "RunnerEnemy" && collision != collision.gameObject.GetComponent<BoxCollider2D>()) {
-            collision.gameObject.GetComponent<RunnerEnemyRules>().enemyHealth -= 1;
+        if (collision.gameObject.name == "RegularEnemy") {
+            if (collision != collision.gameObject.GetComponent<BoxCollider2D>()) {
+                collision.gameObject.GetComponent<RegularEnemyRules>().enemyHealth -= 1;
+            } else if (collision != collision.gameObject.GetComponent<BoxCollider2D>()) {
+                collision.gameObject.GetComponent<RegularEnemyRules>().enemyHealth -= 1;
+            }
+        } else if (collision.gameObject.name == "RunnerEnemy") {
+            if (collision != collision.gameObject.GetComponent<BoxCollider2D>()) {
+                collision.gameObject.GetComponent<RunnerEnemyRules>().enemyHealth -= 1;
+            } else if (collision != collision.gameObject.GetComponent<BoxCollider2D>()) {
+                collision.gameObject.GetComponent<RunnerEnemyRules>().enemyHealth -= 1;
+            }
         }
     }
 }
