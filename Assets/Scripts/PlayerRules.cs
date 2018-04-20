@@ -10,8 +10,8 @@ public class PlayerRules : MonoBehaviour {
 	[HideInInspector]
     public int playerAttack = 1;
 	public GameObject EndGameScreen;
-	Vector3 facingLeftScale;
-	Vector3 facingRightScale;
+	public Vector3 facingLeftScale;
+	public Vector3 facingRightScale;
 	public Camera camera;
 	[HideInInspector]
 	public bool timerStarter = false;
@@ -23,6 +23,8 @@ public class PlayerRules : MonoBehaviour {
 	[HideInInspector]
 	public bool stunned = false;
 	float stunTimer = 3f;
+	public GameObject sword;
+	public string secondaryWeapon = "Bow";
 	
 	void Start() {
 		facingLeftScale = transform.localScale;
@@ -94,5 +96,8 @@ public class PlayerRules : MonoBehaviour {
 			timer = 5f;
 			healthBar.SetActive(true);
 		}
+	}
+	public void DisableDodgingVariable() {
+		sword.GetComponent<CombatScript>().dodging = false;
 	}
 }

@@ -3,15 +3,15 @@ Now:
 - Blocking the enemy just in time will regenerate you 0.25 HP (not sure if this was acomplished)
 - Adjust CameraFollow script
 - When you block an enemy just in time it will also stun them for a very short amount of time
+- Add an bow to the player
 
 Earlier Later:
 - red stroke around the screen when the health is low
 
 Later:
 After new player texture is done to this {
-- More arm Variants for player (after making new character texture)
+- More arm Variants for player
 - At certain health points the texture changes to a sliced version of the same object
-- Player Able to Dodge
 }
 - After a lot of mechanics are made, make a Tutorial Level
 - Add a Check mark on top of the enemies head and make them do a little jump when they get alerted
@@ -20,6 +20,7 @@ After new player texture is done to this {
  
 Maybe:
 - add a stealth system so more players will try the game (Ill do this depending on what type of game this will end up)
+- Make a gadget that makes you go back in time (costs mana and is for a short amount of time)
 
 More Enemy AI Variants:
 using my new texture Ill make an enemy that runs at you really fast and if you block his attack just in time he will get knocked out and you'll be able to kill him and if not you'll get damaged and stunned
