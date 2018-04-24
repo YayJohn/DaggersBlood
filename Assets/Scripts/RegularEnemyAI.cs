@@ -15,7 +15,7 @@ public class RegularEnemyAI : MonoBehaviour {
 	Vector3 facingLeftScale;
 	Vector3 facingRightScale;
 	public bool vulnerable = false;
-	float vulnerableTimer = 0.25f;
+	float vulnerableTimer = 1f;
 	bool vulnerablePreparerStarter = false;
 	float vulnerablePreparerTimer = 0.269946011f;
 	public bool stunned = false;
@@ -54,7 +54,7 @@ public class RegularEnemyAI : MonoBehaviour {
 			if (vulnerableTimer > 0) {
 				vulnerableTimer -= Time.deltaTime;
 			} else {
-				vulnerableTimer = 0.25f;
+				vulnerableTimer = 1f;
 				vulnerable = false;
 			}
 		}

@@ -644,7 +644,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.52, y: -1.41, z: -10}
   m_LocalScale: {x: 1.247174, y: 1.2471737, z: 1.2471737}
-  m_Children: []
+  m_Children:
+  - {fileID: 1477715268}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -936,7 +937,7 @@ GameObject:
   - component: {fileID: 712231508}
   m_Layer: 0
   m_Name: RunnerEnemy
-  m_TagString: Untagged
+  m_TagString: RunnerEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1431,9 +1432,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 954408785}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 1.39, y: -1.31, z: 0}
-  m_LocalScale: {x: 0.336737, y: 0.46145427, z: 1.2471737}
+  m_LocalScale: {x: 0.3367373, y: 0.4614547, z: 1.2471737}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -1639,6 +1640,7 @@ MonoBehaviour:
   arrow: {fileID: 954408785}
   camera: {fileID: 513813833}
   arrowSpeed: 100000
+  playerRules: {fileID: 1030127073}
 --- !u!95 &992511214
 Animator:
   serializedVersion: 3
@@ -1806,7 +1808,6 @@ Transform:
   m_LocalScale: {x: 1.247174, y: 1.2471737, z: 1.2471737}
   m_Children:
   - {fileID: 992511212}
-  - {fileID: 1477715268}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2126,7 +2127,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1030127067}
-  medivalSword: {fileID: 992511211}
 --- !u!70 &1170839574
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2618,7 +2618,7 @@ GameObject:
   - component: {fileID: 1348711996}
   m_Layer: 0
   m_Name: RegularEnemy
-  m_TagString: Enemy
+  m_TagString: RegularEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3011,19 +3011,19 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1477715267}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 8.01813}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1115948604}
   - {fileID: 1401278103}
   - {fileID: 1167788839}
-  m_Father: {fileID: 1030127070}
-  m_RootOrder: 1
+  m_Father: {fileID: 513813834}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -5.740979, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1477715269
