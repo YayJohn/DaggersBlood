@@ -14,8 +14,8 @@ public class PlayerRules : MonoBehaviour {
 	public Vector3 facingRightScale;
 	public Camera camera;
 	[HideInInspector]
-	public bool timerStarter = false;
-	public float timer = 5f;
+	public bool healthbarEnabler = false;
+	public float healthbarTimer = 5f;
 	public GameObject healthBar;
 	public Image bar3;
 	public Image bar2;
@@ -39,12 +39,12 @@ public class PlayerRules : MonoBehaviour {
 				stunned = false;
 			}
 		}
-		if (timerStarter == true) {
-			if (timer > 0) {
-				timer -= Time.deltaTime;
+		if (healthbarEnabler == true) {
+			if (healthbarTimer > 0) {
+				healthbarTimer -= Time.deltaTime;
 			} else {
-				timer = 5f;
-				timerStarter = false;
+				healthbarTimer = 5f;
+				healthbarEnabler = false;
 				healthBar.SetActive(false);
 			}
 		}
@@ -91,9 +91,9 @@ public class PlayerRules : MonoBehaviour {
 	}
 	void OnCollisionEnter2D(Collision2D collision) {
 		if (collision.gameObject.name != "Medival Sword") {
-			//if the player is hit start the timer
-			timerStarter = true;
-			timer = 5f;
+			//if the player is hit start the healthbarTimer
+			healthbarEnabler = true;
+			healthbarTimer = 5f;
 			healthBar.SetActive(true);
 		}
 	}
