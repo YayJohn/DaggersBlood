@@ -35,7 +35,7 @@ public class EnemyKillingScript : MonoBehaviour {
                                           playerRules.playerHealth += 1;
                                           healthAddingPending = 0;
                                           stunned = true;
-                                          gameObject.GetComponentInParent<Animator>().applyRootMotion = false;
+                                          //gameObject.GetComponentInParent<Animator>().applyRootMotion = false;
                                           gameObject.GetComponentInParent<Animator>().Play("EnemyBlockedKnockback");
                                           playerRules.healthbarEnabler = true;
                                           playerRules.healthBar.SetActive(true);

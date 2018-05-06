@@ -18,10 +18,11 @@ public class CombatScript : MonoBehaviour {
     public GameObject sword;
     Vector3 bowPosition;
     float chargeDuration = 0f;
-    float chargeDurationNeeded = 2f;
+    float chargeDurationNeeded = 1f;
     bool chargingBow = false;
     bool firstTime = true;
     float chargeDurationToOne;
+    bool ableToShoot = true;
 
 	// Update is called once per frame
 	void Update () {
@@ -60,39 +61,42 @@ public class CombatScript : MonoBehaviour {
         } else if (Input.GetButton("Fire2") == false) {
             sword.GetComponent<Animator>().SetBool("defending", false);
             defending = false;
-        } else if (Input.GetButton("Fire2") && playerRules.secondaryWeapon == "Bow") {
+        } else if (Input.GetButton("Fire2") && playerRules.secondaryWeapon == "Bow" && ableToShoot) {
             Debug.Log("Key PRessed");
             sword.GetComponent<SpriteRenderer>().enabled = false;
             bow.GetComponent<SpriteRenderer>().enabled = true;
-                //Play Charging Animation
+                bow.GetComponent<Animator>().Play("ChargingBow");
                 chargeDuration += Time.deltaTime;
-                if (chargeDuration >= 6f) {
-                    //Play an animation of the player's hand shaking here
+                if (chargeDuration >= 2.8f) {
+                    bow.GetComponent<Animator>().Play("BowShaking");
                 }
-                else if (chargeDuration >= 8.5f) {
-                    //Disable Player Charging Animation Here
+                if (chargeDuration >= 4f) {
                     chargeDuration = 0f;
+                    ableToShoot = false;
+                    bow.GetComponent<Animator>().Play("Idle");
                 }
         } 
-        if (Input.GetButton("Fire2") == false && chargeDuration > 0 && playerRules.secondaryWeapon == "Bow") {
-            Debug.Log("Released Key");
-            if (transform.localScale == playerRules.facingLeftScale) {
-                facingLeftOrRight = -1f;
-                bowPosition = new Vector3(-1.4f, 0f, 0f);
-            } else {
-                facingLeftOrRight = 1f;
-                bowPosition = new Vector3(2.45f, 0f, 0f);
+        if (Input.GetButton("Fire2") == false && playerRules.secondaryWeapon == "Bow") {
+            if (chargeDuration == 0)
+                ableToShoot = true;
+            else {
+                if (transform.localScale == playerRules.facingLeftScale) {
+                    facingLeftOrRight = -1f;
+                    bowPosition = new Vector3(-1.4f, 0f, 0f);
+                } else {
+                    facingLeftOrRight = 1f;
+                    bowPosition = new Vector3(2.45f, 0f, 0f);
+                }
+                //2.45, 1.40, 0
+                arrow = (Instantiate(coreArrow, gameObject.transform.position + bowPosition, Quaternion.Euler(0f, 0f, 90f * facingLeftOrRight)));
+                arrow.GetComponent<CapsuleCollider2D>().enabled = true;
+                arrow.GetComponent<MeshRenderer>().enabled = true;
+                if (chargeDuration > chargeDurationNeeded)
+                    chargeDuration = chargeDurationNeeded;
+                //arrow.GetComponent<Rigidbody2D>().AddForce(new Vector2(arrowSpeed * facingLeftOrRight * Time.deltaTime, 0f));
+                arrow.GetComponent<Rigidbody2D>().velocity = new Vector2(arrowSpeed * chargeDuration * facingLeftOrRight * Time.deltaTime, 0f);
+                chargeDuration = 0f;
             }
-            //2.45, 1.40, 0
-            arrow = (Instantiate(coreArrow, gameObject.transform.position + bowPosition, Quaternion.Euler(0f, 0f, 90f * facingLeftOrRight)));
-            arrow.GetComponent<CapsuleCollider2D>().enabled = true;
-            arrow.GetComponent<MeshRenderer>().enabled = true;
-            if (chargeDuration > chargeDurationNeeded)
-                chargeDuration = chargeDurationNeeded;
-            chargeDuration /= 2;
-            //arrow.GetComponent<Rigidbody2D>().AddForce(new Vector2(arrowSpeed * facingLeftOrRight * Time.deltaTime, 0f));
-            arrow.GetComponent<Rigidbody2D>().velocity = new Vector2(arrowSpeed * chargeDuration * facingLeftOrRight * Time.deltaTime, 0f);
-            chargeDuration = 0f;
         }
 	}
     void OnTriggerEnter2D(Collider2D collision) {

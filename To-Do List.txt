@@ -13,7 +13,7 @@ After new player texture is done to this {
 - At certain health points the texture changes to a sliced version of the same object
 }
 After you make an alert system:
-	- Add a Check mark on top of the enemies head and make them do a little jump when they get alerted
+- Add a Check mark on top of the enemies head and make them do a little jump when they get alerted
 - When an enemy hits you when you are blocking them just in time, play a sound and make them get back a bit
 - When stunned when you try to move the camera will move slightly to the side you are clicking on
 

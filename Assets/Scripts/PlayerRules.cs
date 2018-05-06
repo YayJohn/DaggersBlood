@@ -23,8 +23,7 @@ public class PlayerRules : MonoBehaviour {
 	[HideInInspector]
 	public bool stunned = false;
 	float stunTimer = 3f;
-	public GameObject sword;
-	public string secondaryWeapon = "Bow";
+	public string secondaryWeapon;
 	
 	void Start() {
 		facingLeftScale = transform.localScale;
@@ -98,6 +97,6 @@ public class PlayerRules : MonoBehaviour {
 		}
 	}
 	public void DisableDodgingVariable() {
-		sword.GetComponent<CombatScript>().dodging = false;
+		gameObject.GetComponent<CombatScript>().dodging = false;
 	}
 }
