@@ -12,13 +12,17 @@ public class RegularEnemyAI : MonoBehaviour {
 	public bool enemyRotated = false;
 	[HideInInspector]
 	public bool enemyDead = false;
-	Vector3 facingLeftScale;
-	Vector3 facingRightScale;
+	public Vector3 facingLeftScale;
+	public Vector3 facingRightScale;
 	public bool vulnerable = false;
 	float vulnerableTimer = 2f;
 	bool vulnerablePreparerStarter = false;
 	float vulnerablePreparerTimer = 0.269946011f;
 	public bool stunned = false;
+	public bool alerted = false;
+	int goLeftOrRight;
+	float guardMovingStarterTimer = 5f;
+	Vector2 destination;
 
 	void Start() {
 		facingRightScale = transform.localScale;
@@ -41,8 +45,22 @@ public class RegularEnemyAI : MonoBehaviour {
 		// if the enemy isnt dead follow the player
 		if(enemyDead == false) {
 			if (stunned == false) {
-				playerPosition = new Vector2(player.transform.position.x, player.transform.position.y);
-				transform.position = Vector3.MoveTowards(transform.position, playerPosition, 1f * Time.deltaTime);
+				if (alerted == true) {
+					playerPosition = new Vector2(player.transform.position.x, player.transform.position.y);
+					transform.position = Vector2.MoveTowards(transform.position, playerPosition, Time.deltaTime);
+				} else {
+					if (guardMovingStarterTimer > 0)
+						guardMovingStarterTimer -= Time.deltaTime;
+					else
+						guardMovingStarterTimer = 5f;
+						if (goLeftOrRight == 1) {
+							goLeftOrRight = -1;
+						} else {
+							goLeftOrRight = 1;
+						}
+						destination = new Vector2(transform.position.x + 5f * goLeftOrRight, transform.position.y);
+						transform.position = Vector2.MoveTowards(transform.position, destination, Time.deltaTime);
+				}
 			}
 		}
 		if (vulnerablePreparerStarter) {

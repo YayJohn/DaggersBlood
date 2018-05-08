@@ -1,8 +1,8 @@
 Now:
 - Add an alert system (enemies wont just follow you if you are far away from them)
-- Blocking the enemy just in time will regenerate you 0.25 HP (not sure if this was acomplished)
-- When you block an enemy just in time it will also stun them for a very short amount of time (not sure if this was acomplished)
-- When shooting an arrow and then another one you can control the previous arrow, fix that
+- Change the time for when the enemy is vulnerable
+- Add an question mark when the enemy is suspect
+- Add an Exclamation mark when the enemy is alerted and also make him jump a bit when he does that
 
 Earlier Later:
 - red stroke around the screen when the health is low
@@ -24,6 +24,7 @@ Later Later:
 Maybe:
 - add a stealth system so more players will try the game (Ill do this depending on what type of game this will end up)
 - Make a gadget that makes you go back in time (costs mana and is for a short amount of time)
+- Add an skill that will let you return the arrow to you after you shot it and can also hit enemies while doing that
 
 More Enemy AI Variants:
 using my new texture Ill make an enemy that runs at you really fast and if you block his attack just in time he will get knocked out and you'll be able to kill him and if not you'll get damaged and stunned

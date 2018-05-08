@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CombatScript : MonoBehaviour {
 	
@@ -62,7 +63,6 @@ public class CombatScript : MonoBehaviour {
             sword.GetComponent<Animator>().SetBool("defending", false);
             defending = false;
         } else if (Input.GetButton("Fire2") && playerRules.secondaryWeapon == "Bow" && ableToShoot) {
-            Debug.Log("Key PRessed");
             sword.GetComponent<SpriteRenderer>().enabled = false;
             bow.GetComponent<SpriteRenderer>().enabled = true;
                 bow.GetComponent<Animator>().Play("ChargingBow");

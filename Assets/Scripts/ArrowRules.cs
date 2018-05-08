@@ -16,6 +16,7 @@ public class ArrowRules : MonoBehaviour {
 		gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
 		transform.parent = collision.gameObject.transform;
 		gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+		gameObject.GetComponent<Rigidbody2D>().gravityScale = 0f;
 		hittedSomething = true;
 	}
 	

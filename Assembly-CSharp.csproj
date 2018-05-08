@@ -96,6 +96,7 @@
      <Compile Include="Assets\PostProcessing\Runtime\Utils\MaterialFactory.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
      <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
+     <Compile Include="Assets\Scripts\AlertSystem.cs" />
      <Compile Include="Assets\Scripts\ArrowRules.cs" />
      <Compile Include="Assets\Scripts\AudioPlayer.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
