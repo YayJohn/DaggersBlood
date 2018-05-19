@@ -24,16 +24,47 @@ public class CombatScript : MonoBehaviour {
     bool firstTime = true;
     float chargeDurationToOne;
     bool ableToShoot = true;
+    int comboAttacks = 0;
+    public GameObject enemy;
+    float dontClipThroughEnemyWhenAttackingMax;
+    bool enemyInAttackingRange;
 
+    void OnTriggerEnter2D(Collider2D collision) {
+        if (collision != null) {
+            enemy = collision.gameObject;
+            enemyInAttackingRange = true;
+        }
+        else
+            enemyInAttackingRange = false;
+    }
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
             sword.GetComponent<SpriteRenderer>().enabled = true;
             bow.GetComponent<SpriteRenderer>().enabled = false;
             // makes the sword lethal only when you press the attack button
             sword.GetComponent<CapsuleCollider2D>().enabled = true;
-            sword.GetComponent<Animator>().Play("LightAttackMedivalSword");
+            if (transform.localScale == playerRules.facingLeftScale) {
+                facingLeftOrRight = -1f;
+            } else {
+                facingLeftOrRight = 1f;
+            }
+            switch(comboAttacks) {
+                case 0:
+                    sword.GetComponent<Animator>().Play("PlayerLightAttackComboStarter");
+                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x + 2.5f * facingLeftOrRight, transform.position.y), 200f * Time.deltaTime);
+                    if (enemyInAttackingRange && enemy.transform.position.x < transform.position.x + 5f * facingLeftOrRight && enemy.transform.position.x > transform.position.x && enemy.transform.position.y < transform.position.y + 0.62f && enemy.transform.position.y > transform.position.y - 0.62f)
+                        transform.position = new Vector2(enemy.transform.position.x + 1.247174f * facingLeftOrRight, transform.position.y);
+                    else
+                        transform.position = new Vector2(transform.position.x + 5f * facingLeftOrRight, transform.position.y);
+                    break;
+
+                default:
+                    comboAttacks = 0;
+                    break;
+            }
+            //comboAttacks += 1;
             timerStarter = true;
             playerRules.healthbarEnabler = true;
             playerRules.healthBar.SetActive(true);
@@ -99,14 +130,4 @@ public class CombatScript : MonoBehaviour {
             }
         }
 	}
-    void OnTriggerEnter2D(Collider2D collision) {
-        // if the sword collided with an enemy and not its attack trigger then lower his health by the player's attack power (currently 1)
-        if (collision.gameObject.tag == "RegularEnemy") {
-            if (collision != collision.gameObject.GetComponent<BoxCollider2D>())
-                collision.gameObject.GetComponent<RegularEnemyRules>().enemyHealth -= 1;
-        } else if (collision.gameObject.tag == "RunnerEnemy") {
-            if (collision != collision.gameObject.GetComponent<BoxCollider2D>())
-                collision.gameObject.GetComponent<RunnerEnemyRules>().enemyHealth -= 1;
-        }
-    }
 }
