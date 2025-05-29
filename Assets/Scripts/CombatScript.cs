@@ -53,11 +53,11 @@ public class CombatScript : MonoBehaviour {
             switch(comboAttacks) {
                 case 0:
                     sword.GetComponent<Animator>().Play("PlayerLightAttackComboStarter");
-                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x + 2.5f * facingLeftOrRight, transform.position.y), 200f * Time.deltaTime);
+                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x + (2.5f * facingLeftOrRight), transform.position.y), 200f * 0.16f);
                     if (enemyInAttackingRange && enemy.transform.position.x < transform.position.x + 5f * facingLeftOrRight && enemy.transform.position.x > transform.position.x && enemy.transform.position.y < transform.position.y + 0.62f && enemy.transform.position.y > transform.position.y - 0.62f)
                         transform.position = new Vector2(enemy.transform.position.x + 1.247174f * facingLeftOrRight, transform.position.y);
                     else
-                        transform.position = new Vector2(transform.position.x + 5f * facingLeftOrRight, transform.position.y);
+                        transform.position = new Vector2(transform.position.x + 1 * facingLeftOrRight, transform.position.y);
                     break;
 
                 default:
